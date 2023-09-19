@@ -1,0 +1,35 @@
+function Show(props) {
+  return (
+    <h3>
+      Name is {props.name}
+    </h3>
+  );
+}
+
+Show.defaultProps = {
+  name: '홍길동'
+}
+
+const element = <Show name="고명세"/>;
+ReactDOM.render(element, document.getElementById('root'));
+
+
+function Show(props) {
+  return (
+    <h3>
+      Name is {props.name}
+    </h3>
+  );
+}
+
+function App() {
+  return(
+    <main>
+     <Show name="고명세"/>
+     <Show name="홍길동"/>
+     <Show name="이순신"/>
+    </main>
+  );
+}
+
+ReactDOM.render(<App/>, document.getElementById('root'));
