@@ -27,25 +27,24 @@
                
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
        				aria-expanded="false">			<%-- 위 타겟과 같은 이름--%>
-           <ul class="nav navbar-nav"> <%-- ul은 리스트를 보여줄 때 사용 --%>
+           	  <ul class="nav navbar-nav"> <%-- ul은 리스트를 보여줄 때 사용 --%>
                    <li><a href="main.jsp">메인</a></li> <%-- li 원소, 게시판 이름 옆 --%>
                    <li><a href="bbs.jsp">게시판</a></li>
-           </ul>
+           	  </ul>
                       
-           <ul class="nav navbar-nav navbar-right"> <%-- 게시판 오른쪽 --%>
-              <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"
-                     data-toggle="dropdown" role="button" aria-haspopup="true"
-                     aria-expanded="false">접속하기<span class="caret"></span></a>
-                     <%-- #:가르키는 링크가 없음, caret: 아이콘 --%>
-                                        
-           	<ul class="dropdown-menu"> <%-- 네비게이션 바 구축 --%>
-                <li class="active"><a href="login.jsp">로그인</a></li><%-- active:현재 선택됨 --%>
-                <li><a href="join.jsp">회원가입</a></li> <%-- 회원가입 페이지 연결 --%>
-           </ul>
-         </li>
-       </ul>
-       </div>
+              <ul class="nav navbar-nav navbar-right">		 <%-- 게시판 오른쪽 --%>
+				  <li class="dropdown">
+           			  <a href="#" class="dropdown-toggle"
+                    	  data-toggle="dropdown" role="button" aria-haspopup="true"
+                    	  aria-expanded="false">접속하기<span class="caret"></span></a>
+                    		<%-- #:가르키는 링크가 없음, caret: 아이콘 --%>                                 
+           			  <ul class="dropdown-menu"> 		<%-- 네비게이션 바 구축 --%>
+                		  <li class="active"><a href="login.jsp">로그인</a></li>		<%-- active:현재 선택됨 --%>
+                		  <li><a href="join.jsp">회원가입</a></li>		 <%-- 회원가입 페이지 연결 --%>
+           			  </ul>
+         		  </li>
+       		  </ul>
+       	 </div>
 	</nav>
 	
 	<%-- 로그인 양식 --%>
@@ -68,7 +67,7 @@
          </div>
          <div class="col-Lg-4"></div>        
      </div>      
-     <script src="https://code.jquery.com-3.1.1.min.js"></script> <%--애니메이션 퀴리--%>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <%--애니메이션 퀴리--%>					
      <script src="js/bootstrap.min.js"></script> <%--기본 제공 자바스크랩트 파일 --%>
      
 </body>

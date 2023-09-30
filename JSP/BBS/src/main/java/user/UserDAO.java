@@ -14,10 +14,10 @@ public class UserDAO {
 	
 	public UserDAO() {					// 생성자
 		try {							// 자동 실행
-			String dbURL = "jdbc:mysql://localhost:3306/BBS";	// mysql 서버
+			String dbURL = "jdbc:mysql://localhost:3306/BBS?serverTimezone=Asia/Seoul";	// mysql 서버
 			String dbID = "root";								// root 계정
 			String dbPassword = "msko060201!";							// root 비밀번호
-			Class.forName("com.mysql.jdbc.Driver");				// mysql 드라이버 찾기
+			Class.forName("com.mysql.cj.jdbc.Driver");				// mysql 드라이버 찾기
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword); // 객체 안에 정보 저장
 		} catch (Exception e) {			// 예외 처리
 			e.printStackTrace();
@@ -42,5 +42,21 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return -2; // 데이터베이스 오류
+	}
+	
+	public int join(User user) {
+		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?)";  // 순서대로 5개의 값 저장
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,  user.getUserID());		// 매개변수로 넘어온 값 저장
+			pstmt.setString(2,  user.getUserPassword());
+			pstmt.setString(3,  user.getUserName());
+			pstmt.setString(4,  user.getUserGender());
+			pstmt.setString(5,  user.getUserEmail());
+			return pstmt.executeUpdate();		// 실행한 결과 , 성공 시 0 이상의 숫자 반환
+		} catch(Exception e) {		// 예외 처리
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
 	}
 }

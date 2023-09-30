@@ -60,7 +60,7 @@
                 										<%-- placeholder:아무것도 없을 경우 보여주는 글자, user:대문자 --%>
                   	</div>
                  	<div class="form-group">
-                		<input type="password" class="form-control" placeholder="비밀번호" name="userPassID" maxlength="20">
+                		<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
                   	</div>
                   	<div class="form-group">
                 		<input type="text" class="form-control" placeholder="이름" name="userName" maxlength="20">								
