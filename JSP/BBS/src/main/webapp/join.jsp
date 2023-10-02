@@ -37,11 +37,11 @@
                     <a href="#" class="dropdown-toggle"
                      data-toggle="dropdown" role="button" aria-haspopup="true"
                      aria-expanded="false">접속하기<span class="caret"></span></a>
-                     <%-- #:가르키는 링크가 없음, caret: 아이콘 --%>
+                     <%-- #:가리키는 링크가 없음, caret: 아이콘 --%>
                                         
            	<ul class="dropdown-menu"> <%-- 네비게이션 바 구축 --%>
-                <li class="active"><a href="login.jsp">로그인</a></li><%-- active:현재 선택됨 --%>
-                <li><a href="join.jsp">회원가입</a></li> <%-- 회원가입 페이지 연결 --%>
+                <li><a href="login.jsp">로그인</a></li>
+                <li class="active"><a href="join.jsp">회원가입</a></li> <%-- 회원가입 페이지 연결 active:현재 선택됨 --%>
            </ul>
          </li>
        </ul>
@@ -84,7 +84,7 @@
          </div>
          <div class="col-Lg-4"></div>        
      </div>      
-     <script src="https://code.jquery.com-3.1.1.min.js"></script> <%--애니메이션 퀴리--%>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <%--애니메이션 퀴리--%>
      <script src="js/bootstrap.min.js"></script> <%--기본 제공 자바스크랩트 파일 --%>
      
 </body>
