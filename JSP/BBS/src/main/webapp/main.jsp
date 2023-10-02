@@ -33,7 +33,7 @@
         </div>
                
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
-       				aria-expanded="false">			<%-- 위 타겟과 같은 이름--%>
+       				aria-expanded="false">			<%-- 위 data-target과 같은 이름--%>
            	  <ul class="nav navbar-nav"> <%-- ul은 리스트를 보여줄 때 사용 --%>
                    <li class="active"><a href="main.jsp">메인</a></li> <%-- li 원소, active:현재 선택됨 --%>
                    <li><a href="bbs.jsp">게시판</a></li>
