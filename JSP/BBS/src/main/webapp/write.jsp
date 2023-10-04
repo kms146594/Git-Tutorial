@@ -75,25 +75,24 @@
 	</nav>     
 	<div class="container">
 		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: ipx solid #dddddd">
-				<thead>
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>안녕하세요.</td>
-						<td>홍길동</td>
-						<td>2018-10-08</td>
-					</tr>
-				</tbody>
-			</table>
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<form method="post" action="writeAction.jsp">	<%-- 작성된 내용을 writeAction.jsp로 전송 --%>
+				<table class="table table-striped" style="text-align: center; border: ipx solid #dddddd">
+					<thead>
+						<tr>	<%-- colspan: 2개 열 크기 --%>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+						</tr>
+						<tr>
+							<td><textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;"></textarea></td>
+						</tr>	<%-- textarea: 장문의 글 --%>
+					</tbody> 
+				</table>
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">	<%-- 글쓰기 버튼 --%>
+			</form>			
 		</div>
 	</div>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <%--애니메이션 퀴리--%>					
