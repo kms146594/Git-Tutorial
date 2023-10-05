@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class BbsDAO {
 
@@ -70,4 +71,42 @@ public class BbsDAO {
 		return -1;		// 데이터베이스 오류
 	}
 	
+	public ArrayList<Bbs> getList(int pageNumber) {			// 특정한 페이지에 따른 게시글 10개 반환
+		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
+		// bbsID가 특정한 수보다 작은 게시글 AND 삭제되지 않아 Available이 1인 게시글을 bbsID 내림차순으로 최대 10개 
+		ArrayList<Bbs> list = new ArrayList<Bbs>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);	// getNext:다음으로 작성될 게시글 번호
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Bbs bbs = new Bbs();	// bbs에 담을 모든 속성
+				bbs.setBbsID(rs.getInt(1));
+				bbs.setBbsTitle(rs.getString(2));
+				bbs.setUserID(rs.getString(3));
+				bbs.setBbsDate(rs.getString(4));
+				bbs.setBbsContent(rs.getString(5));
+				bbs.setBbsAvailable(rs.getInt(6));
+				list.add(bbs);		// list에 담아 반환
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;		// 데이터베이스 오류
+	}
+	
+	public boolean nextPage(int pageNumber) {		// 페이지 처리를 위한 함수(
+		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1"; // 
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return true;		// 다음 페이지로 넘어갈 수 있음
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;			// 다음 페이지가 없음
+	}
 }
