@@ -120,8 +120,8 @@
 				if(userID != null && userID.equals(bbs.getUserID())){		// 글의 작성자가 본인인 경우
 			%>
 					<a href="update.jsp?bbsID=<%= bbsID %>" class="btn btn-primary">수정</a>
-					<a href="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-primary">삭제</a>
-			<% 	
+					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-primary">삭제</a>
+			<% 		// onclick: 팝업 내용을 띄움
 				}
 			%>
 			<input type="submit" class="btn btn-primary pull-right" value="글쓰기">	<%-- 글쓰기 버튼 --%>		

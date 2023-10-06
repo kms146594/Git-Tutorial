@@ -42,7 +42,9 @@
 			script.println("location.href = 'bbs.jsp'");
 			script.println("</script>");
 		} else {				// 로그인이 되어있는 경우
-			if (bbs.getBbsTitle() == null || bbs.getBbsContent() == null) {	// 입력 값이 없어서 null인 경우
+			if (request.getParameter("bbsTitle") == null || request.getParameter("bbsContent") == null 
+			|| request.getParameter("bbsTitle").equals("") || request.getParameter("bbsContent").equals("")) {	
+				// 매개변수로 넘어 온 bbsTitle과 bbsContent 값이 null이거나 빈 칸인 경우 
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
 					script.println("alert('입력이 안 된 사항이 있습니다.')");
@@ -50,14 +52,14 @@
 					script.println("</script>");	
 				} else {											
 					BbsDAO bbsDAO = new BbsDAO();	// 
-					int result = bbsDAO.write(bbs.getBbsTitle(), userID, bbs.getBbsContent());	// 매개변수로 게시글 작성
+					int result = bbsDAO.update(bbsID, request.getParameter("bbsTitle"), request.getParameter("bbsContent"));	// 매개변수로 게시글 작성
 					if (result == -1) {					// 결과 값이 -1이 반환된 경우 = 데이터베이스 오류
 						PrintWriter script = response.getWriter();
 						script.println("<script>");
-						script.println("alert('글쓰기에 실패했습니다.')");
+						script.println("alert('글 수정에 실패했습니다.')");
 						script.println("history.back()");
 						script.println("</script>");
-					} else {							// 글 작성 성공
+					} else {							// 글 수정 성공
 						PrintWriter script = response.getWriter();
 						script.println("<script>");
 						script.println("location.href = 'bbs.jsp'");	// 게시판으로 이동

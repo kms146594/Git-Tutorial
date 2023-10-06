@@ -19,26 +19,26 @@
 		if (session.getAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");		// 로그인 한 경우 userID
 		}
-		if (userID == null) {
+		if (userID == null) {		// 로그인을 하지 않은 경우
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인을 하세요.')");
 			script.println("location.href = 'login.jsp'");
 			script.println("</script>");
 		}
-		int bbsID = 0;
-		if (request.getParameter("bbsID") != null) {
+		int bbsID = 0;				
+		if (request.getParameter("bbsID") != null) {		// bbsID 값을 전달 받음
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		}
-		if (bbsID == 0) {
+		if (bbsID == 0) {			// bbsID 값이 전달되지 않음
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글입니다.')");
 			script.println("location.href = 'bbs.jsp'");
 			script.println("</script>");
 		}
-		Bbs bbs = new BbsDAO().getBbs(bbsID);
-		if (!userID.equals(bbs.getUserID())) {
+		Bbs bbs = new BbsDAO().getBbs(bbsID);		
+		if (!userID.equals(bbs.getUserID())) {			// bbsID 값이 글을 작성한 사람인지 확인
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다.')");
@@ -89,10 +89,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>																								<%-- 수정하기 전 내용을 보여줌 --%>
+						<tr>																								      <%-- 수정하기 전 내용을 보여줌 --%>
 							<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50" value="<%= bbs.getBbsTitle() %>"></td>
 						</tr>
-						<tr>
+						<tr>																											 	 <%-- 수정하기 전 내용을 보여줌 --%>
 							<td><textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;"><%= bbs.getBbsContent() %></textarea></td>
 						</tr>	<%-- textarea: 장문의 글 --%>
 					</tbody> 
